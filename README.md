@@ -270,27 +270,36 @@ WHERE churn_rate >
 
 
 
+
+
+
+
+
+
+
 ## 🧮 DAX Measures & Calculations
+* The following DAX measures were created to support segmentation, customer lifetime value analysis, and churn behavior insights across the dashboard:
 
-To drive the visualizations in this dashboard, the following DAX measures were created to aggregate the raw customer data:
+| Measure Name | DAX Formula | Description |
+|-------------|------------|-------------|
+| **Age Group** | `SWITCH(TRUE(), VALUE(dim_demographic[age]) < 18, "Under 18", VALUE(dim_demographic[age]) <= 25, "18-25", VALUE(dim_demographic[age]) <= 35, "26-35", VALUE(dim_demographic[age]) <= 45, "36-45", VALUE(dim_demographic[age]) <= 55, "46-55", VALUE(dim_demographic[age]) <= 65, "56-65", VALUE(dim_demographic[age]) <= 70, "66-70", "Elderly")` | Categorizes customers into age brackets for demographic analysis. |
+| **Average CLTV** | `AVERAGE(fact_churn[cltv])` | Calculates the average customer lifetime value. |
+| **Average Satisfaction Score** | `AVERAGE(fact_churn[satisfaction_score])` | Computes the mean customer satisfaction rating. |
+| **Average Tenure (Months)** | `AVERAGE(fact_churn[tenure_months])` | Calculates the average customer lifespan before churn. |
+| **Average Number of Dependents** | `AVERAGE(dim_demographic[dependents])` | Measures the average number of dependents per customer. |
+| **Total CLTV** | `SUM(fact_churn[cltv])` | Computes total lifetime value across all customers. |
 
-| Metric | DAX Formula | Description |
-| :--- | :--- | :--- |
-| *Total Customers* | Number of customer = COUNT('public customer_data'[customer_id]) | Calculates the total count of unique customer IDs. |
-| *Average Purchase* | Average Purchse Amount = AVERAGE('public customer_data'[purchase_amount]) | Calculates the mean value of all transactions. |
-| *Average Rating* | Average Review Rating = AVERAGE('public customer_data'[review_rating]) | Calculates the mean satisfaction score across all reviews. |
 
-### Measures Snippet
-```dax
-// Total Number of Customers
-Number of customer = COUNT('public customer_data'[customer_id])
 
-// Average Purchase Value
-Average Purchse Amount = AVERAGE('public customer_data'[purchase_amount])
 
-// Average Customer Satisfaction
-Average Review Rating = AVERAGE('public customer_data'[review_rating])
-```
+
+
+
+
+
+
+
+
 
 
 
