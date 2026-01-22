@@ -259,23 +259,39 @@ WHERE churn_rate >
 | Month-to-Month | 1655 | 3610 | 45.84% |
 
 
+* After performing exploratory data analysis using SQL, the PostgreSQL database was connected to Microsoft Power BI to build visualizations and answer critical business questions for decision-making.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# Data Model
+# Data Model (Snowflake)
 
 <img width="1309" height="602" alt="Screenshot 2026-01-22 105455" src="https://github.com/user-attachments/assets/7af8b3d6-e52d-447d-ad19-8af1a4457d3c" />
+
+
+
+
+
+## 🧮 DAX Measures & Calculations
+
+To drive the visualizations in this dashboard, the following DAX measures were created to aggregate the raw customer data:
+
+| Metric | DAX Formula | Description |
+| :--- | :--- | :--- |
+| *Total Customers* | Number of customer = COUNT('public customer_data'[customer_id]) | Calculates the total count of unique customer IDs. |
+| *Average Purchase* | Average Purchse Amount = AVERAGE('public customer_data'[purchase_amount]) | Calculates the mean value of all transactions. |
+| *Average Rating* | Average Review Rating = AVERAGE('public customer_data'[review_rating]) | Calculates the mean satisfaction score across all reviews. |
+
+### Measures Snippet
+```dax
+// Total Number of Customers
+Number of customer = COUNT('public customer_data'[customer_id])
+
+// Average Purchase Value
+Average Purchse Amount = AVERAGE('public customer_data'[purchase_amount])
+
+// Average Customer Satisfaction
+Average Review Rating = AVERAGE('public customer_data'[review_rating])
+```
+
 
 
 
