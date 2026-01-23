@@ -10,14 +10,14 @@ Subject: Urgent: Strategic Review of Customer Churn & Market Expansion
 * ​What is our current churn rate, and what is the total Revenue.
 * ​Why exactly are they leaving? 
 * ​Which service offerings (Internet Type/Contract) are most vulnerable to competitor poaching?
-* ​Does Premium Tech Support actually act as a "stickiness" factor in reducing churn?
+* ​What is the percentage of customers that subcribe to Premium Tech Support.
 * ​Which cities are our "Profit Strongholds" (High Revenue/High Loyalty) and which are "Danger Zones" (High Churn Rate)
 * ​Which age groups have the most churn rate (Targeted for Marketing). 
 * ​How long is the average customer "lifespan" (tenure) before they decide to leave?
-* ​what is the Average customer  Satisfaction Score.
-* What are top reason that make customer churn. 
+* ​what is the Average customer  Satisfaction Score. 
 * What are the most acceptable payments method. 
 * What is the rate of our senior citizen of all customer.
+
 
 # Project Diagram
 <img width="1178" height="610" alt="tel" src="https://github.com/user-attachments/assets/9f5ed4cd-098c-41d1-a2b3-23d476a3231d" />
@@ -142,8 +142,6 @@ GROUP BY s.churn_value;
 
 
 
-
-
 ```sql
 -- 2.How many customers churned by contract type?
 SELECT
@@ -165,8 +163,6 @@ ORDER BY churned_customers DESC;
 | Month-to-Month | 1655 |
 | One Year | 166 |
 | Two Year | 48 |
-
-
 
 
 
@@ -222,9 +218,6 @@ WHERE monthly_charges >
 | 8779-QRDMV | 95.10 |
 
 
-
-
-
 ```sql
 -- 5. Which contract types have above-average churn rates?
 WITH churn_summary AS (
@@ -269,14 +262,6 @@ WHERE churn_rate >
 
 
 
-
-
-
-
-
-
-
-
 ## 🧮 DAX Measures & Calculations
 * The following DAX measures were created to support segmentation, customer lifetime value analysis, and churn behavior insights across the dashboard:
 
@@ -290,18 +275,43 @@ WHERE churn_rate >
 | **Total CLTV** | `SUM(fact_churn[cltv])` | Computes total lifetime value across all customers. |
 
 
+// Customer Age Segmentation
+age_group =
+VAR CurrentAge = VALUE(dim_demographic[age])
+RETURN
+SWITCH(
+    TRUE(),
+    CurrentAge < 18, "Under 18",
+    CurrentAge <= 25, "18-25",
+    CurrentAge <= 35, "26-35",
+    CurrentAge <= 45, "36-45",
+    CurrentAge <= 55, "46-55",
+    CurrentAge <= 65, "56-65",
+    CurrentAge <= 70, "66-70",
+    "Elderly"
+)
 
+### Measures Snippet
+```dax
+// Average Customer Lifetime Value
+avg_cltv = AVERAGE(fact_churn[cltv])
 
+// Average Customer Satisfaction
+avg_customers_satisfaction_rate =
+AVERAGE(fact_churn[satisfaction_score])
 
+// Average Customer Tenure
+avg_month_tenure =
+AVERAGE(fact_churn[tenure_months])
 
+// Average Number of Dependents
+avg_number_of_dependent =
+AVERAGE(dim_demographic[dependents])
 
-
-
-
-
-
-
-
+// Total Customer Lifetime Value
+total_cltv =
+SUM(fact_churn[cltv])
+```
 
 
 # Dashboard
@@ -312,5 +322,98 @@ WHERE churn_rate >
 
 <img width="1200" height="660" alt="services" src="https://github.com/user-attachments/assets/19ddc988-1d6f-4a90-903b-6dee65619a5e" />
 
-
 <img width="1233" height="654" alt="4" src="https://github.com/user-attachments/assets/6a246b80-4ef8-468e-868f-999128f51a98" />
+
+
+
+
+# 🔍 Business Insights
+
+* The current customer churn rate stands at 26.54%, indicating a significant retention challenge.
+
+* The primary driver of churn is competitive pressure, with better devices offered by competitors being the leading reason customers leave.
+
+* Customers on Month-to-Month contracts and those using Cable internet services are the most vulnerable to competitor poaching.
+
+* 29.02% of customers subscribe to Premium Tech Support, suggesting moderate adoption but room for growth.
+
+* Los Angeles generates the highest revenue and has a strong base of loyal customers, while San Francisco contributes the lowest revenue among major markets. Escondido shows signs of low customer loyalty.
+
+* The highest churn rates are observed among customers aged 36–45, 46–55, and 26–35, indicating churn risk is concentrated within the core working-age population.
+
+* The average customer tenure is 32.37 months, providing a benchmark for expected customer lifespan.
+
+* The average customer satisfaction score is 3.24, reflecting a need for service quality improvements.
+
+* Bank Withdrawal is the most preferred payment method among customers.
+
+* Senior citizens represent 16.21% of the customer base, forming a meaningful but secondary customer segment.
+
+# 🎯 Strategic Recommendations
+
+## 1️⃣ Strengthen Competitive Positioning
+
+Introduce device upgrade programs and limited-time device promotions to counter competitor advantages.
+
+Bundle devices with longer-term contracts to reduce churn risk.
+
+## 2️⃣ Reduce Churn in High-Risk Segments
+
+Target Month-to-Month and Cable internet customers with loyalty incentives such as discounts, service upgrades, or contract migration offers.
+
+Prioritize retention campaigns for customers aged 26–55, as this group represents the highest churn concentration.
+
+## 3️⃣ Expand Premium Tech Support Adoption
+
+Position Premium Tech Support as a value-added retention tool by offering free trials or discounted bundles for at-risk customers.
+
+Measure churn rates between subscribers and non-subscribers to validate its effectiveness as a retention lever.
+
+## 4️⃣ Focus on City-Level Retention Strategies
+
+Protect Los Angeles as a revenue stronghold through loyalty programs and proactive customer engagement.
+
+Investigate churn drivers in San Francisco and Escondido to design localized retention initiatives.
+
+## 5️⃣ Improve Customer Experience & Satisfaction
+
+Address service quality issues to raise the satisfaction score above 3.24, focusing on network reliability, customer support response time, and service transparency.
+
+Use satisfaction trends as an early warning indicator for churn risk.
+
+## 6️⃣ Optimize Payment Experience
+
+Maintain and enhance Bank Withdrawal payment options while promoting incentives for customers to adopt automated payments, reducing friction and late payments.
+
+## 7️⃣ Develop Senior-Focused Offerings
+
+Create simplified plans or support packages tailored to senior citizens, leveraging their relatively stable presence in the customer base.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
