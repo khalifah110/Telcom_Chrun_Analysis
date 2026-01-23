@@ -275,6 +275,10 @@ WHERE churn_rate >
 | **Total CLTV** | `SUM(fact_churn[cltv])` | Computes total lifetime value across all customers. |
 
 
+
+### Measures Snippet
+```dax
+
 // Customer Age Segmentation
 age_group =
 VAR CurrentAge = VALUE(dim_demographic[age])
@@ -291,8 +295,6 @@ SWITCH(
     "Elderly"
 )
 
-### Measures Snippet
-```dax
 // Average Customer Lifetime Value
 avg_cltv = AVERAGE(fact_churn[cltv])
 
