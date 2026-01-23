@@ -356,41 +356,41 @@ SUM(fact_churn[cltv])
 
 # 🎯 Strategic Recommendations
 
-### 1️⃣ Strengthen Competitive Positioning
+#### 1️⃣ Strengthen Competitive Positioning
 
 Introduce device upgrade programs and limited-time device promotions to counter competitor advantages.
 
 Bundle devices with longer-term contracts to reduce churn risk.
 
-### 2️⃣ Reduce Churn in High-Risk Segments
+#### 2️⃣ Reduce Churn in High-Risk Segments
 
 Target Month-to-Month and Cable internet customers with loyalty incentives such as discounts, service upgrades, or contract migration offers.
 
 Prioritize retention campaigns for customers aged 26–55, as this group represents the highest churn concentration.
 
-### 3️⃣ Expand Premium Tech Support Adoption
+#### 3️⃣ Expand Premium Tech Support Adoption
 
 Position Premium Tech Support as a value-added retention tool by offering free trials or discounted bundles for at-risk customers.
 
 Measure churn rates between subscribers and non-subscribers to validate its effectiveness as a retention lever.
 
-### 4️⃣ Focus on City-Level Retention Strategies
+#### 4️⃣ Focus on City-Level Retention Strategies
 
 Protect Los Angeles as a revenue stronghold through loyalty programs and proactive customer engagement.
 
 Investigate churn drivers in San Francisco and Escondido to design localized retention initiatives.
 
-### 5️⃣ Improve Customer Experience & Satisfaction
+#### 5️⃣ Improve Customer Experience & Satisfaction
 
 Address service quality issues to raise the satisfaction score above 3.24, focusing on network reliability, customer support response time, and service transparency.
 
 Use satisfaction trends as an early warning indicator for churn risk.
 
-### 6️⃣ Optimize Payment Experience
+#### 6️⃣ Optimize Payment Experience
 
 Maintain and enhance Bank Withdrawal payment options while promoting incentives for customers to adopt automated payments, reducing friction and late payments.
 
-### 7️⃣ Develop Senior-Focused Offerings
+#### 7️⃣ Develop Senior-Focused Offerings
 
 Create simplified plans or support packages tailored to senior citizens, leveraging their relatively stable presence in the customer base.
 
