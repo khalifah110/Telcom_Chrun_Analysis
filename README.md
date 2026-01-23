@@ -1,9 +1,12 @@
 # Telcom_Chrun_Analysis
 
 **Business Problem Statement:** Telecom Retention & Revenue Growth
-​To: Lead Data Analyst
-From: Chief Operating Officer (COO) / VP of Customer Success
-Subject: Urgent: Strategic Review of Customer Churn & Market Expansion
+
+*From: Chief Operating Officer (COO) / VP of Customer Success*.
+
+​*To: Lead Data Analyst*.
+
+*Subject: Urgent:* Strategic Review of Customer Churn & Market Expansion*
 ​Our latest quarterly review shows a significant fluctuation in our market share across California. While our total revenue sits at $21.36M, we are concerned that our "leaky bucket" (customer churn) is offsetting our acquisition efforts. We need a comprehensive intelligence dashboard to move from reactive troubleshooting to proactive retention.
 ​Please analyze our consumer behavior and service data to provide clear answers to the following strategic pillars:
 
