@@ -328,7 +328,9 @@ SUM(fact_churn[cltv])
 <img width="1200" height="660" alt="services" src="https://github.com/user-attachments/assets/19ddc988-1d6f-4a90-903b-6dee65619a5e" />
 
 <img width="1233" height="654" alt="4" src="https://github.com/user-attachments/assets/6a246b80-4ef8-468e-868f-999128f51a98" />
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
 #### The dashboard was automated to enable real-time visibility and reduce manual reporting effort.
 
 
