@@ -325,7 +325,9 @@ SUM(fact_churn[cltv])
 
 <img width="1225" height="673" alt="2" src="https://github.com/user-attachments/assets/0b31e2e9-c010-4fe7-a6c2-5c2c3007f7b6" />
 
-<img width="1200" height="660" alt="services" src="https://github.com/user-attachments/assets/19ddc988-1d6f-4a90-903b-6dee65619a5e" />
+<img width="1198" height="663" alt="Screenshot 2026-01-29 214132" src="https://github.com/user-attachments/assets/79ff2a03-2a2a-4e9c-a197-47bb472f282b" />
+
+
 
 <img width="1233" height="654" alt="4" src="https://github.com/user-attachments/assets/6a246b80-4ef8-468e-868f-999128f51a98" />
 
