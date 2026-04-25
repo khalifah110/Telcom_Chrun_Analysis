@@ -62,7 +62,7 @@ CREATE TABLE location (
     longitude DECIMAL(9,6)
 );
 
--- 2. Population Table
+-- 2. Population Table (Dimension)
 CREATE TABLE population (
     zip_code VARCHAR(20) REFERENCES location(zip_code),
     population_count INT
