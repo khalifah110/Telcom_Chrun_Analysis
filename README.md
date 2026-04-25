@@ -53,7 +53,7 @@ To prepare the dataset for analysis and data modeling, the following data cleani
 ```sql
 -- 1. Location Table (Dimension)
 CREATE TABLE location (
-    location_id SERIAL PRIMARY KEY, -- Surrogate Key
+    location_id SERIAL PRIMARY KEY,
     country VARCHAR(50),
     states VARCHAR(50),
     city VARCHAR(100),
@@ -62,16 +62,15 @@ CREATE TABLE location (
     longitude DECIMAL(9,6)
 );
 
--- 2. Population Table (Now links via Zip Code)
+-- 2. Population Table
 CREATE TABLE population (
-    zip_code VARCHAR(20) PRIMARY KEY REFERENCES location(zip_code),
+    zip_code VARCHAR(20) REFERENCES location(zip_code),
     population_count INT
 );
 
-
 -- 3. Demographic Table (Dimension)
 CREATE TABLE demographic (
-    demographic_id PRIMARY KEY, -- Surrogate Key
+    demographic_id SERIAL PRIMARY KEY,
     gender VARCHAR(20),
     age INT,
     under_30 BOOLEAN,
@@ -83,8 +82,8 @@ CREATE TABLE demographic (
 
 -- 4. Status Table (Dimension)
 CREATE TABLE status (
-    status_id PRIMARY KEY,
-    quarter VARCHAR(5),
+    status_id SERIAL PRIMARY KEY,
+    quarter VARCHAR(10),
     customer_status VARCHAR(20),
     churn_label VARCHAR(10),
     churn_value BOOLEAN,
@@ -94,7 +93,7 @@ CREATE TABLE status (
 
 -- 5. Service Table (Dimension)
 CREATE TABLE service (
-    service_id  PRIMARY KEY,
+    service_id SERIAL PRIMARY KEY,
     phone_service BOOLEAN,
     multiple_lines BOOLEAN,
     internet_service BOOLEAN,
@@ -103,23 +102,22 @@ CREATE TABLE service (
     payment_method VARCHAR(50)
 );
 
--- 6. Churn Table (The Fact Table - Connecting everything)
-Create Table
-churn(
-customer_id VARCHAR(20),
-location_id VARCHAR(20) FOREIGN KEY,
-service_id VARCHAR(20) FOREIGN KEY,
-demographics_id VARCHAR(20) FOREIGN KEY,
-status_id VARCHAR(20) FOREIGN KEY,
-tenure_months INT,
-churn_score INT,
-cltv INT,
-monthly_charges NUMERIC(10,2),
-total _charges NUMERIC(10,2),
-total_refunds NUMERIC(10,2),
-total_long_distance_charges NUMERIC(10,2),
-total_revenue NUMERIC(10,2),
-satisfaction_score INT
+-- 6. Churn Table (The Fact Table)
+CREATE TABLE churn (
+    customer_id VARCHAR(20) PRIMARY KEY,
+    location_id INT REFERENCES location(location_id),
+    service_id INT REFERENCES service(service_id),
+    demographic_id INT REFERENCES demographic(demographic_id),
+    status_id INT REFERENCES status(status_id),
+    tenure_months INT,
+    churn_score INT,
+    cltv INT,
+    monthly_charges NUMERIC(10,2),
+    total_charges NUMERIC(10,2),
+    total_refunds NUMERIC(10,2),
+    total_long_distance_charges NUMERIC(10,2),
+    total_revenue NUMERIC(10,2),
+    satisfaction_score INT
 );
 ```
 * After loading the data into PostgreSQL tables, exploratory and validation analyses were performed using SQL in VS Code.
